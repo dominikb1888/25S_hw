@@ -32,7 +32,7 @@ WORKDIR /app
 COPY pyproject.toml poetry.lock ./
 RUN poetry install --no-dev
 
-COPY app ./app
+COPY . .
 
 # -- Stage 2: Runtime --
 FROM alpine:3.19
@@ -52,7 +52,7 @@ RUN apk add --no-cache \
 
 WORKDIR /app
 
-COPY --from=builder /app /app
+COPY --from=builder . .
 
 EXPOSE 8000
 
