@@ -19,7 +19,7 @@ ENV POETRY_VERSION=1.8.2 \
 RUN curl -sSL https://install.python-poetry.org | python3 - && \
     ln -s /root/.local/bin/poetry /usr/local/bin/poetry
 
-WORKDIR /app
+WORKDIR .
 
 COPY pyproject.toml poetry.lock ./
 RUN poetry install --no-dev
@@ -37,7 +37,7 @@ RUN apk add --no-cache \
     openssl-dev~3.1 \
 
 
-WORKDIR /app
+WORKDIR .
 
 COPY --from=builder . .
 
