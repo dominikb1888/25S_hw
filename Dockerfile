@@ -2,12 +2,12 @@
 FROM alpine:3.19 AS builder
 
 # Define exact versions
-ENV PYTHON_VERSION=3.11.7-r1 \
-    PIP_VERSION=23.3.2-r0 \
-    LIBFFI_DEV_VERSION=3.4.4-r1 \
-    OPENSSL_DEV_VERSION=3.1.5-r0 \
-    MUSL_DEV_VERSION=1.2.4-r1 \
-    BUILD_BASE_VERSION=0.5-r3
+ENV PYTHON_VERSION=3.11.7 \
+    PIP_VERSION=23.3.2 \
+    LIBFFI_DEV_VERSION=3.4.4 \
+    OPENSSL_DEV_VERSION=3.1.5 \
+    MUSL_DEV_VERSION=1.2.4 \
+    BUILD_BASE_VERSION=0.5
 
 # Install system deps for Python + Poetry
 RUN apk add --no-cache \
@@ -38,10 +38,10 @@ COPY . .
 FROM alpine:3.19
 
 # Runtime versions
-ENV PYTHON_VERSION=3.11.7-r1 \
-    PIP_VERSION=23.3.2-r0 \
-    LIBFFI_VERSION=3.4.4-r1 \
-    OPENSSL_VERSION=3.1.5-r0
+ENV PYTHON_VERSION=3.11.7 \
+    PIP_VERSION=23.3.2 \
+    LIBFFI_VERSION=3.4.4 \
+    OPENSSL_VERSION=3.1.5
 
 # Install only runtime deps (exact versions)
 RUN apk add --no-cache \
