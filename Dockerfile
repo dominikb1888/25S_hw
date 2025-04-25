@@ -1,22 +1,14 @@
 # -- Stage 1: Builder --
 FROM alpine:3.19 AS builder
 
-# Define exact versions
-ENV PYTHON_VERSION=3.11.7 \
-    PIP_VERSION=23.3.2 \
-    LIBFFI_DEV_VERSION=3.4.4 \
-    OPENSSL_DEV_VERSION=3.1.5 \
-    MUSL_DEV_VERSION=1.2.4 \
-    BUILD_BASE_VERSION=0.5
-
 # Install system deps for Python + Poetry
 RUN apk add --no-cache \
-    python3=$PYTHON_VERSION \
-    py3-pip=$PIP_VERSION \
-    build-base=$BUILD_BASE_VERSION \
-    libffi-dev=$LIBFFI_DEV_VERSION \
-    openssl-dev=$OPENSSL_DEV_VERSION \
-    musl-dev=$MUSL_DEV_VERSION \
+    python3~3.11 \
+    py3-pip~23.3 \
+    build-base \
+    libffi-dev~3.4 \
+    openssl-dev~3.1 \
+    musl-dev~1.2 \
     curl
 
 # Install Poetry
@@ -37,18 +29,13 @@ COPY . .
 # -- Stage 2: Runtime --
 FROM alpine:3.19
 
-# Runtime versions
-ENV PYTHON_VERSION=3.11.7 \
-    PIP_VERSION=23.3.2 \
-    LIBFFI_VERSION=3.4.4 \
-    OPENSSL_VERSION=3.1.5
-
 # Install only runtime deps (exact versions)
 RUN apk add --no-cache \
-    python3=$PYTHON_VERSION \
-    py3-pip=$PIP_VERSION \
-    libffi=$LIBFFI_VERSION \
-    openssl=$OPENSSL_VERSION
+    python3~3.11 \
+    py3-pip~23.3 \
+    libffi-dev~3.4 \
+    openssl-dev~3.1 \
+
 
 WORKDIR /app
 
