@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "helloworld"
+version = "0.1.0"
+description = ""
+authors = ["Dominik Böhler <dominik.boehler@gmx.net>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.12"
+uvicorn = {extras = ["standard"], version = "^0.34.2"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
