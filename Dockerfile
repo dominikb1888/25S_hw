@@ -34,8 +34,7 @@ RUN apk add --no-cache \
     python3~3.11 \
     py3-pip~23.3 \
     libffi-dev~3.4 \
-    openssl-dev~3.1 \
-
+    openssl-dev~3.1
 
 WORKDIR .
 
