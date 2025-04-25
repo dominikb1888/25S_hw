@@ -10,6 +10,7 @@
 
   # https://devenv.sh/languages/
   languages.python.enable = true;
+  languages.python.version = "3.11";
   languages.python.poetry.enable = true;
   # https://devenv.sh/processes/
   # processes.cargo-watch.exec = "cargo-watch";
